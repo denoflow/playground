@@ -8,12 +8,13 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import Toolbar from '../components/Toolbar';
-import fmt from '../services/fmt';
+// import fmt from '../services/fmt';
 import format from '../services/formatter';
 import { getExampleSourceCode } from '../services/request';
 import run from '../services/run';
 import styles from '../styles/Home.module.scss';
 import { makeMarkdownFrom } from '../services/markdown';
+
 const DENOFLOW_URL = 'https://github.com/denoflow/denoflow';
 export default function Home(): JSX.Element {
   const [sourceCode, setSourceCode] = useState<string>('');

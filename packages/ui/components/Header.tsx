@@ -6,6 +6,7 @@ import {
   DialogTitle,
   IconButton,
 } from '@material-ui/core';
+import Link from 'next/link';
 import { GitHub, Help } from '@material-ui/icons';
 import React from 'react';
 import { Alert } from '@material-ui/lab';
@@ -25,13 +26,16 @@ const Header = (): JSX.Element => {
   return (
     <header className={styles.header}>
       <nav className={styles.navbar}>
-        <a href="/" className={styles.deno}>
-          <DenoLogo />
-          <div className={styles.title}>
-            <h1>Denoflow Playground</h1>
-            <h2>An unofficial land for exploring</h2>
-          </div>
-        </a>
+        <Link href="/">
+          <a className={styles.deno}>
+            <DenoLogo />
+            <div className={styles.title}>
+              <h1>Denoflow Playground</h1>
+              <h2>An unofficial land for exploring</h2>
+            </div>
+          </a>
+        </Link>
+
         <div className={styles.placeholder} />
 
         {/* 

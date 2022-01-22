@@ -10,11 +10,12 @@ import {
   Snackbar,
   ThemeProvider,
 } from '@material-ui/core';
+
 import { Transition } from 'react-transition-group';
 import { ExpandMore, PlayArrow } from '@material-ui/icons';
 import { Alert } from '@material-ui/lab';
 import React, { useCallback } from 'react';
-import lzstring from 'lz-string';
+// import lzstring from 'lz-string';
 import { useClipboard } from 'use-clipboard-copy';
 import useMatchMedia from 'use-match-media-hook';
 import { ExampleId, getExampleSourceCode } from '../services/request';
@@ -189,92 +190,92 @@ const Toolbar = ({
     );
   };
 
-  const openInASTViewer = () => {
-    closeExport();
-    const source = onAccessSource();
-    window.open(
-      `https://ts-ast-viewer.com/#code/${lzstring.compressToEncodedURIComponent(
-        source
-      )}`,
-      '_blank',
-      'noopener,noreferrer'
-    );
-  };
+  // const openInASTViewer = () => {
+  //   closeExport();
+  //   const source = onAccessSource();
+  //   window.open(
+  //     `https://ts-ast-viewer.com/#code/${lzstring.compressToEncodedURIComponent(
+  //       source
+  //     )}`,
+  //     '_blank',
+  //     'noopener,noreferrer'
+  //   );
+  // };
 
-  const openInStackBlitz = () => {
-    closeExport();
+  // const openInStackBlitz = () => {
+  //   closeExport();
 
-    const source = onAccessSource();
-    const files = {
-      'package.json': {
-        content: {
-          name: 'deno-playground-export',
-          version: '0.0.1',
-          description: 'Denoflow Playground exported sandbox',
-          scripts: {
-            'deno-install':
-              'curl -fsSL https://deno.land/x/install/install.sh | sh && export DENO_INSTALL="~/.local" &&  export PATH="$DENO_INSTALL/bin:$PATH"',
-            'set-up-types':
-              'rm -rf ./deno-types && mkdir ./deno-types && ~/.deno/bin/deno types >> ./deno-types/lib.deno_runtime.d.ts',
-            deno: '~/.deno/bin/deno run --allow-net ./index.ts --reload',
-            'watch-file-changes':
-              'nodemon -w ./src --exec "npm run deno" -e "js ts json mjs"',
-            start:
-              'npm run deno-install && npm run set-up-types && npm run watch-file-changes',
-          },
-          dependencies: {},
-          devDependencies: {
-            nodemon: '^2.0.12',
-          },
-          keywords: [],
-        },
-      },
-      'index.ts': {
-        content: source,
-      },
-      '.gitignore': {
-        content: 'deno-types',
-      },
-      'tsconfig.json': {
-        content: {
-          compilerOptions: {
-            strict: true,
-            noImplicitAny: true,
-            strictNullChecks: true,
-            strictFunctionTypes: true,
-            strictPropertyInitialization: true,
-            strictBindCallApply: true,
-            noImplicitThis: true,
-            noImplicitReturns: true,
-            alwaysStrict: true,
-            esModuleInterop: true,
-            declaration: true,
-            experimentalDecorators: true,
-            emitDecoratorMetadata: true,
-            target: 'ESNext',
-            jsx: 'react',
-            module: 'ESNext',
-            lib: ['ESNext', 'DOM'],
-            moduleResolution: 'node',
-            allowJs: true,
-            noEmit: true,
-            pretty: true,
-            resolveJsonModule: true,
-            typeRoots: ['./deno-types'],
-          },
-          include: ['./**/*.ts'],
-        },
-      },
-    };
-    // Using the v1 get API
-    const parameters = lzstring
-      .compressToBase64(JSON.stringify({ files }))
-      .replace(/\+/g, '-') // Convert '+' to '-'
-      .replace(/\//g, '_') // Convert '/' to '_'
-      .replace(/=+$/, ''); // Remove ending '='
-    const url = `https://codesandbox.io/api/v1/sandboxes/define?view=editor&parameters=${parameters}`;
-    window.open(url, '_blank', 'noopener,noreferrer');
-  };
+  //   const source = onAccessSource();
+  //   const files = {
+  //     'package.json': {
+  //       content: {
+  //         name: 'deno-playground-export',
+  //         version: '0.0.1',
+  //         description: 'Denoflow Playground exported sandbox',
+  //         scripts: {
+  //           'deno-install':
+  //             'curl -fsSL https://deno.land/x/install/install.sh | sh && export DENO_INSTALL="~/.local" &&  export PATH="$DENO_INSTALL/bin:$PATH"',
+  //           'set-up-types':
+  //             'rm -rf ./deno-types && mkdir ./deno-types && ~/.deno/bin/deno types >> ./deno-types/lib.deno_runtime.d.ts',
+  //           deno: '~/.deno/bin/deno run --allow-net ./index.ts --reload',
+  //           'watch-file-changes':
+  //             'nodemon -w ./src --exec "npm run deno" -e "js ts json mjs"',
+  //           start:
+  //             'npm run deno-install && npm run set-up-types && npm run watch-file-changes',
+  //         },
+  //         dependencies: {},
+  //         devDependencies: {
+  //           nodemon: '^2.0.12',
+  //         },
+  //         keywords: [],
+  //       },
+  //     },
+  //     'index.ts': {
+  //       content: source,
+  //     },
+  //     '.gitignore': {
+  //       content: 'deno-types',
+  //     },
+  //     'tsconfig.json': {
+  //       content: {
+  //         compilerOptions: {
+  //           strict: true,
+  //           noImplicitAny: true,
+  //           strictNullChecks: true,
+  //           strictFunctionTypes: true,
+  //           strictPropertyInitialization: true,
+  //           strictBindCallApply: true,
+  //           noImplicitThis: true,
+  //           noImplicitReturns: true,
+  //           alwaysStrict: true,
+  //           esModuleInterop: true,
+  //           declaration: true,
+  //           experimentalDecorators: true,
+  //           emitDecoratorMetadata: true,
+  //           target: 'ESNext',
+  //           jsx: 'react',
+  //           module: 'ESNext',
+  //           lib: ['ESNext', 'DOM'],
+  //           moduleResolution: 'node',
+  //           allowJs: true,
+  //           noEmit: true,
+  //           pretty: true,
+  //           resolveJsonModule: true,
+  //           typeRoots: ['./deno-types'],
+  //         },
+  //         include: ['./**/*.ts'],
+  //       },
+  //     },
+  //   };
+  //   // Using the v1 get API
+  //   const parameters = lzstring
+  //     .compressToBase64(JSON.stringify({ files }))
+  //     .replace(/\+/g, '-') // Convert '+' to '-'
+  //     .replace(/\//g, '_') // Convert '/' to '_'
+  //     .replace(/=+$/, ''); // Remove ending '='
+  //   const url = `https://codesandbox.io/api/v1/sandboxes/define?view=editor&parameters=${parameters}`;
+  //   window.open(url, '_blank', 'noopener,noreferrer');
+  // };
 
   const openExamples = (event: React.MouseEvent<HTMLElement>) => {
     setExampleAnchor(event.currentTarget);
