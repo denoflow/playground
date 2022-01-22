@@ -65,7 +65,7 @@ export default function Home(): JSX.Element {
     try {
       response = await run(sourceCode);
     } catch (err) {
-      response = err;
+      response = err as string;
     }
     setConsole(response);
     setProcessing(false);
