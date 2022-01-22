@@ -26,7 +26,7 @@ export function executeCommand(
   if (commandType === "run") {
     command.push("--allow-all");
   }
-  command.push("https://denopkg.com/denoflow/denoflow@main/cli.ts");
+  command.push("https://deno.land/x/denoflow@0.0.15/cli.ts");
   command.push("run");
   command.push("--debug");
   command.push("--stdin");
