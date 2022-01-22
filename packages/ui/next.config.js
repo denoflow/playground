@@ -4,8 +4,6 @@ const {
   PHASE_PRODUCTION_BUILD,
 } = require('next/constants');
 
-const BASE_PATH = '/deno-playground';
-
 // This uses phases as outlined here: https://nextjs.org/docs/#custom-configuration
 module.exports = (phase) => {
   // when started in development mode `next dev` or `npm run dev` regardless of the value of STAGING environmental variable
@@ -24,16 +22,12 @@ module.exports = (phase) => {
       if (isDev) {
         return 'http://localhost:3000/api';
       }
-      return 'https://deno-playground-api.vercel.app/api';
+      return 'https://denoflow-playground-api.vercel.app/api';
     })(),
   };
 
   // next.config.js object
   return {
-    basePath: isDev ? undefined : `${BASE_PATH}`,
-    assetPrefix: isDev
-      ? undefined
-      : `https://deno-playground.peterbartha.com${BASE_PATH}`,
     env,
 
     webpack(config) {
