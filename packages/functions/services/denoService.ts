@@ -3,7 +3,7 @@ import { SupportedDenoSubCommand } from "../interface.ts";
 // import { run } from 'https://denopkg.com/denoflow/denoflow@main/mod.ts'
 // Vercel timeout is 10 seconds for hobby tier:
 // https://vercel.com/docs/platform/limits
-const PROCESS_TIMEOUT = 10000;
+const PROCESS_TIMEOUT = 30000;
 
 export function executeCommand(
   commandType: SupportedDenoSubCommand,
