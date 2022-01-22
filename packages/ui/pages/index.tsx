@@ -113,15 +113,8 @@ export default function Home(): JSX.Element {
         <title>
           Denoflow Playground - An online playground for exploring Denoflow
         </title>
-        <link
-          rel="icon"
-          href="https://deno-playground.peterbartha.com/deno-playground/favicon.svg"
-          type="image/svg+xml"
-        />
-        <link
-          rel="icon"
-          href="https://deno-playground.peterbartha.com/deno-playground/favicon.ico"
-        />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.ico" />
 
         <meta name="author" content="Peter Bartha" />
         <meta
@@ -133,10 +126,7 @@ export default function Home(): JSX.Element {
           property="og:description"
           content="An online playground for exploring Denoflow"
         />
-        <meta
-          property="og:image"
-          content="https://deno-playground-peterbartha.vercel.app/deno-og-image.png"
-        />
+        <meta property="og:image" content="/favicon.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
       </Head>
