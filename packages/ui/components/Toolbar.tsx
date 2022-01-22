@@ -166,7 +166,7 @@ const Toolbar = ({
     closeExport();
     const markdown = await onGenerateMarkdown();
     openDialog(
-      'Markdown version of Deno Playground code for GitHub issue',
+      'Markdown version of Denoflow Playground code for GitHub issue',
       markdown,
       'code'
     );
@@ -210,7 +210,7 @@ const Toolbar = ({
         content: {
           name: 'deno-playground-export',
           version: '0.0.1',
-          description: 'Deno Playground exported sandbox',
+          description: 'Denoflow Playground exported sandbox',
           scripts: {
             'deno-install':
               'curl -fsSL https://deno.land/x/install/install.sh | sh && export DENO_INSTALL="~/.local" &&  export PATH="$DENO_INSTALL/bin:$PATH"',
@@ -291,10 +291,10 @@ const Toolbar = ({
   };
 
   const examples = new Map<ExampleId, string>([
-    ['hello-world', 'Hello World'],
-    ['remote-import', 'Remote import'],
-    ['fetch-data', 'Fetch data'],
-    ['subprocesses', 'Subprocesses'],
+    ['default', 'Default'],
+    ['simple', 'Simple'],
+    ['fetch', 'Fetch Json List'],
+    ['rss-discord', 'RSS to Discord'],
   ]);
 
   const theme = createTheme({
@@ -336,7 +336,7 @@ const Toolbar = ({
       </ThemeProvider>
 
       <Button onClick={handleFormat} variant="contained" color="primary">
-        Format
+        Docs
       </Button>
 
       <Button onClick={handleShare} variant="contained" color="primary">
@@ -379,11 +379,6 @@ const Toolbar = ({
             <MenuItem onClick={copyAsMarkdownLinkWithPreview}>
               Copy as Markdown Link with preview
             </MenuItem>
-            <hr />
-            <MenuItem onClick={openInASTViewer}>
-              Open in TypeScript AST viewer
-            </MenuItem>
-            <MenuItem onClick={openInStackBlitz}>Open in StackBlitz</MenuItem>
           </Menu>
         </>
       ) : null}

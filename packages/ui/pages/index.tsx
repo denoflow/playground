@@ -14,7 +14,7 @@ import { getExampleSourceCode } from '../services/request';
 import run from '../services/run';
 import styles from '../styles/Home.module.scss';
 import { makeMarkdownFrom } from '../services/markdown';
-
+const DENOFLOW_URL = 'https://github.com/denoflow/denoflow';
 export default function Home(): JSX.Element {
   const [sourceCode, setSourceCode] = useState<string>('');
   const [console, setConsole] = useState<string>('');
@@ -71,15 +71,17 @@ export default function Home(): JSX.Element {
   }
 
   async function handleFormat() {
-    setProcessing(true);
-    try {
-      const response = await fmt(sourceCode);
-      setSourceCode(response);
-    } catch (err) {
-      setConsole(err);
-    } finally {
-      setProcessing(false);
-    }
+    // setProcessing(true);
+    window.open(DENOFLOW_URL, '_blank');
+
+    // try {
+    //   const response = await fmt(sourceCode);
+    //   setSourceCode(response);
+    // } catch (err) {
+    //   setConsole(err);
+    // } finally {
+    //   setProcessing(false);
+    // }
   }
 
   async function generateMarkdown(): Promise<string> {
@@ -108,8 +110,7 @@ export default function Home(): JSX.Element {
     <div className={styles.container}>
       <Head>
         <title>
-          Deno Playground - An online playground for exploring Deno and
-          TypeScript
+          Denoflow Playground - An online playground for exploring Denoflow
         </title>
         <link
           rel="icon"
@@ -124,15 +125,12 @@ export default function Home(): JSX.Element {
         <meta name="author" content="Peter Bartha" />
         <meta
           name="description"
-          content="The Playground lets you write TypeScript online in a safe and sharable way on Deno runtime."
+          content="An online playground for exploring Denoflow"
         />
-        <meta
-          property="og:title"
-          content="Deno Playground - An online playground for exploring Deno and TypeScript"
-        />
+        <meta property="og:title" content="Denoflow Playground" />
         <meta
           property="og:description"
-          content="The Playground lets you write TypeScript online in a safe and sharable way on Deno runtime."
+          content="An online playground for exploring Denoflow"
         />
         <meta
           property="og:image"
@@ -159,8 +157,9 @@ export default function Home(): JSX.Element {
           <section className={styles.code}>
             <Editor
               height="100%"
-              defaultLanguage="typescript"
+              defaultLanguage="yaml"
               defaultValue=""
+              options={{ tabSize: 2 }}
               value={sourceCode}
               onChange={handleEditorChange}
               onMount={handleEditorDidMount}

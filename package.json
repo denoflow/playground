@@ -13,7 +13,7 @@
     "prepare": "husky install",
     "precommit:functions": "cd packages/functions && npm run precommit",
     "precommit:ui": "cd packages/ui && npm run precommit",
-    "precommit": "yarn run precommit:functions && yarn run precommit:ui"
+    "precommit": "npx yarn run precommit:functions && npx yarn run precommit:ui"
   },
   "devDependencies": {
     "husky": "^6.0.0",

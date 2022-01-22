@@ -1,6 +1,6 @@
 import { writeAll } from "../deps.ts";
 import { SupportedDenoSubCommand } from "../interface.ts";
-
+// import { run } from 'https://denopkg.com/denoflow/denoflow@main/mod.ts'
 // Vercel timeout is 10 seconds for hobby tier:
 // https://vercel.com/docs/platform/limits
 const PROCESS_TIMEOUT = 10000;
@@ -8,25 +8,28 @@ const PROCESS_TIMEOUT = 10000;
 export function executeCommand(
   commandType: SupportedDenoSubCommand,
   body: string,
-  url: string,
+  _url: string,
 ): Promise<{
   isSuccess: boolean;
   isKilled: boolean;
   out: string;
   error: string;
 }> {
-  const command = new Set(["deno", commandType]);
+  const command = ["deno", commandType];
 
-  const [_, search] = url.split("?");
-  const queryParams = new URLSearchParams(search || "");
-  if (queryParams.has("unstable")) {
-    command.add("--unstable");
-  }
+  // const [_, search] = url.split('?')
+  // const queryParams = new URLSearchParams(search || '')
+  // if (queryParams.has("unstable")) {
+  // }
+  command.push("--unstable");
 
   if (commandType === "run") {
-    command.add("--allow-all");
+    command.push("--allow-all");
   }
-  command.add("-");
+  command.push("https://denopkg.com/denoflow/denoflow@main/cli.ts");
+  command.push("run");
+  command.push("--debug");
+  command.push("--stdin");
 
   return execute(Array.from(command), body);
 }
@@ -42,10 +45,11 @@ async function execute(
 }> {
   let isKilled = false;
   // https://deno.land/manual@main/examples/subprocess
+
   const deno = Deno.run({
     cmd,
     env: {
-      DENO_DIR: "/tmp/.deno",
+      DENO_DIR: "/tmp/.deno5",
     },
     stdin: "piped",
     stdout: "piped",
@@ -58,7 +62,7 @@ async function execute(
 
     const timer = setTimeout(() => {
       isKilled = true;
-      deno.kill(Deno.Signal.SIGKILL);
+      deno.kill("SIGKILL");
     }, PROCESS_TIMEOUT);
 
     const [status, stdout, stderr] = await Promise.all([

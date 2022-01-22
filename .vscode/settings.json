@@ -4,5 +4,8 @@
     "source.fixAll.stylelint": true
   },
   "editor.formatOnSave": true,
-  "eslint.alwaysShowStatus": true
+  "eslint.alwaysShowStatus": true,
+  "deno.enable": true,
+  "deno.lint": true,
+  "deno.unstable": true
 }

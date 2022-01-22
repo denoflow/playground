@@ -10,7 +10,7 @@ import { GitHub, Help } from '@material-ui/icons';
 import React from 'react';
 import { Alert } from '@material-ui/lab';
 import styles from '../styles/Header.module.scss';
-import DenoLogo from '../assets/deno-logo.svg';
+import DenoLogo from '../assets/favicon.svg';
 
 const Header = (): JSX.Element => {
   const [isDialogOpen, setDialogOpen] = React.useState(false);
@@ -25,13 +25,10 @@ const Header = (): JSX.Element => {
   return (
     <header className={styles.header}>
       <nav className={styles.navbar}>
-        <a
-          href="https://peterbartha.com/deno-playground"
-          className={styles.deno}
-        >
+        <a href="/" className={styles.deno}>
           <DenoLogo />
           <div className={styles.title}>
-            <h1>Deno Playground</h1>
+            <h1>Denoflow Playground</h1>
             <h2>An unofficial land for exploring</h2>
           </div>
         </a>
@@ -48,7 +45,7 @@ const Header = (): JSX.Element => {
         <IconButton
           className={styles.iconButton}
           aria-label="show GitHub repository"
-          href="https://github.com/peterbartha/deno-playground"
+          href="https://github.com/denoflow/denoflow"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -75,16 +72,13 @@ const Header = (): JSX.Element => {
         <DialogContent dividers>
           <DialogContent id="about-content" tabIndex={-1}>
             <Alert severity="info">
-              <em>
-                This is an unofficial playground for Deno runtime. It was
-                created to be the official playground one day, hopefully. 🤞
-              </em>
+              <em>This is an unofficial playground for Denoflow.</em>
             </Alert>
             <p>
               <strong>
                 The playground is an{' '}
                 <a
-                  href="https://github.com/peterbartha/deno-playground"
+                  href="https://github.com/theowenyoung/denoflow-playground"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -96,43 +90,16 @@ const Header = (): JSX.Element => {
               </strong>
             </p>
             <p>
-              The Deno Playground is a web service that runs on Vercel. The
+              The Denoflow Playground is a web service that runs on Vercel. The
               service receives a TypeScript source code, compiles, runs the
               program with Deno inside a sandbox, and returns the output.
             </p>
-            <p>
-              This playground is modeled after the{' '}
-              <a
-                href="https://www.typescriptlang.org/play"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                TypeScript
-              </a>
-              ,{' '}
-              <a
-                href="https://play.golang.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Go
-              </a>{' '}
-              and{' '}
-              <a
-                href="https://play.rust-lang.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Rust
-              </a>{' '}
-              playgrounds, and we owe an outstanding debt to every contributor
-              to that project.
-            </p>
+
             <h4>Abuse handling</h4>
             <p>
               Any requests for content removal should be directed to the{' '}
               <a
-                href="https://github.com/peterbartha/deno-playground/issues"
+                href="https://github.com/theowenyoung/denoflow-playground/issues"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -165,7 +132,7 @@ const Header = (): JSX.Element => {
             <p>
               This project was created by Peter Bartha, and released under{' '}
               <a
-                href="https://github.com/peterbartha/deno-playground/blob/main/LICENSE"
+                href="https://github.com/theowenyoung/denoflow-playground/blob/main/LICENSE"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -176,46 +143,24 @@ const Header = (): JSX.Element => {
             <h4>Credits</h4>
             <ul>
               <li>
-                <strong>The Deno Playground's logo:</strong> "Dino in the Rain",
-                the current logo of Deno is released under{' '}
+                This project is forked from{' '}
                 <a
-                  href="https://github.com/denoland/deno_website2/blob/main/LICENSE"
+                  href="https://github.com/peterbartha/deno-playground"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  MIT license
+                  peterbartha/deno-playground
                 </a>
-                . Designed by Kevin Qian based on Ryan Dahl's sketch. The
-                original logo can be found{' '}
-                <a
-                  href="https://github.com/denoland/deno_website2/blob/main/public/logo.svg"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  here
-                </a>
-                .
               </li>
               <li>
-                <strong>Loading animation:</strong> "Walking dinosaurs"
-                animation of Deno's public website is released under{' '}
+                Denoflow Docs:{' '}
                 <a
-                  href="https://github.com/denoland/deno_website2/blob/main/LICENSE"
+                  href="https://github.com/denoflow/denoflow"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  MIT license
+                  Denoflow Docs
                 </a>
-                . It is attributed to Deno authors, and the original version can
-                be found{' '}
-                <a
-                  href="https://github.com/denoland/doc_website/blob/main/components/Loading.tsx"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  here
-                </a>
-                .
               </li>
             </ul>
           </DialogContent>

@@ -26,20 +26,11 @@ export function performRequest(
   });
 }
 
-export type ExampleId =
-  | 'default'
-  | 'hello-world'
-  | 'remote-import'
-  | 'fetch-data'
-  | 'subprocesses';
+export type ExampleId = 'default' | 'simple' | 'fetch' | 'rss-discord';
 
 export function getExampleSourceCode(exampleId: ExampleId): Promise<string> {
   const { origin } = window.location;
   return fetch(
-    `${
-      origin.includes('localhost')
-        ? '/'
-        : 'https://deno-playground.peterbartha.com/deno-playground/'
-    }examples/${exampleId}.ts`
+    `${origin.includes('localhost') ? '/' : '/'}examples/${exampleId}.yml`
   ).then((res) => res.text());
 }
