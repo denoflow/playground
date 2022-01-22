@@ -1,5 +1,5 @@
 import { ThemeProvider, withStyles } from '@material-ui/core/styles';
-import { AppProps } from 'next/dist/next-server/lib/router/router';
+import type { AppProps } from 'next/app';
 import React from 'react';
 import '../styles/globals.scss';
 import theme from '../styles/theme';
