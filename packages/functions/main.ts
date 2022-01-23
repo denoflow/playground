@@ -9,5 +9,6 @@ serve(
     response.headers.set("Access-Control-Allow-Credentials", "true");
     return response;
   },
-  { port: 3000 },
+  { port: 10030 },
 );
+console.log("server at", "http://localhost:10030");
