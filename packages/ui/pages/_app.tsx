@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import React from 'react';
 import '../styles/globals.scss';
 import theme from '../styles/theme';
-
+import Ga from '../components/Ga';
 const GlobalCss = withStyles({
   '@global': {
     '.MuiAlert-root': {
@@ -25,6 +25,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     <ThemeProvider theme={theme}>
       <GlobalCss />
       <Component {...pageProps} />
+      <Ga />
     </ThemeProvider>
   );
 }
