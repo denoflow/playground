@@ -293,9 +293,9 @@ const Toolbar = ({
 
   const examples = new Map<ExampleId, string>([
     ['default', 'Default RSS'],
-    ['fetch-simple', 'Fetch Json'],
+    ['simple-fetch', 'Simple Fetch Json'],
     ['simple', 'Simple'],
-    ['fetch', 'Fetch Json List'],
+    ['fetch', 'Raw Fetch Json'],
     ['rss-discord', 'RSS to Discord'],
   ]);
 

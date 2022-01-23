@@ -31,7 +31,7 @@ export type ExampleId =
   | 'simple'
   | 'fetch'
   | 'rss-discord'
-  | 'fetch-simple';
+  | 'simple-fetch';
 
 export function getExampleSourceCode(exampleId: ExampleId): Promise<string> {
   const { origin } = window.location;
