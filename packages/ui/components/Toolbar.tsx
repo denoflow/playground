@@ -406,6 +406,15 @@ const Toolbar = ({
             {name}
           </MenuItem>
         ))}
+        <MenuItem
+          onClick={() => {
+            window.open(
+              'https://github.com/denoflow/denoflow/tree/main/workflows'
+            );
+          }}
+        >
+          More Examples
+        </MenuItem>
       </Menu>
 
       {/*

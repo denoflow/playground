@@ -24,9 +24,13 @@ export function executeCommand(
   command.push("--unstable");
 
   if (commandType === "run") {
+    let directory = "/tmp";
+    if (osType() === "darwin") {
+      directory += ",/private/tmp";
+    }
     command = command.concat(
-      "--allow-read=/tmp,/private/tmp",
-      "--allow-write=/tmp,/private/tmp",
+      "--allow-read=" + directory,
+      "--allow-write=" + directory,
       "--allow-net",
       "--allow-run",
     );
@@ -91,3 +95,18 @@ async function execute(
     deno.close();
   }
 }
+export const osType = (): string => {
+  // deno-lint-ignore no-explicit-any
+  const { Deno } = globalThis as any;
+  if (typeof Deno?.build?.os === "string") {
+    return Deno.build.os;
+  }
+
+  // deno-lint-ignore no-explicit-any
+  const { navigator } = globalThis as any;
+  if (navigator?.appVersion?.includes?.("Win") ?? false) {
+    return "windows";
+  }
+
+  return "linux";
+};

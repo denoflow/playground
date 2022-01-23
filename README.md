@@ -63,7 +63,7 @@ After=network-online.target nss-lookup.target
 [Service]
 Type=exec
 User=green
-ExecStart=/home/green/.deno/bin/deno run -A /home/green/playground/packages/functions/main.ts
+ExecStart=/home/green/.deno/bin/deno run --allow-run --allow-read=/tmp,/private/tmp --allow-write=/tmp,/private/tmp --allow-net /home/green/playground/packages/functions/main.ts
 Restart=on-failure
 SyslogIdentifier=denoflow-playground-api
 
