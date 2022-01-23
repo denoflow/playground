@@ -37,7 +37,7 @@ export function executeCommand(
   }
   command.push("https://deno.land/x/denoflow@0.0.16/cli.ts");
   command.push("run");
-  command.push("--debug");
+  // command.push("--debug");
   command.push("--stdin");
 
   return execute(Array.from(command), body);
