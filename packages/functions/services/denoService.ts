@@ -1,4 +1,4 @@
-import { writeAll } from "../deps.ts";
+import { ensureDir, writeAll } from "../deps.ts";
 import { SupportedDenoSubCommand } from "../interface.ts";
 // import { run } from 'https://denopkg.com/denoflow/denoflow@main/mod.ts'
 // Vercel timeout is 10 seconds for hobby tier:
@@ -55,12 +55,13 @@ async function execute(
   let isKilled = false;
   // https://deno.land/manual@main/examples/subprocess
   console.log("cmd", cmd);
-
+  // ensure dir exists
+  await ensureDir("/tmp/denoflow");
   const deno = Deno.run({
     cmd,
     cwd: "/tmp/denoflow",
     env: {
-      DENO_DIR: "/tmp/deno_dir",
+      DENO_DIR: "/tmp/denoflow/deno_dir",
     },
     stdin: "piped",
     stdout: "piped",
