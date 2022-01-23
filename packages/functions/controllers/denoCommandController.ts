@@ -1,29 +1,26 @@
-import { ServerRequest } from "../deps.ts";
 import { SupportedDenoSubCommand } from "../interface.ts";
 import { executeCommand } from "../services/denoService.ts";
-import { decodeRequestBody } from "../utils/utils.ts";
 
 export async function handleDenoCommand(
   commandType: SupportedDenoSubCommand,
-  request: ServerRequest,
+  request: Request,
 ) {
-  const { method, body: encodedBody, url } = request;
+  const { method, url } = request;
 
   if (method === "OPTIONS") {
-    return request.respond({
+    return new Response(null, {
       status: 200,
     });
   }
 
   if (method !== "POST") {
-    return request.respond({
+    return new Response("Method not allowed.", {
       status: 405,
-      body: "Method not allowed.",
     });
   }
 
   try {
-    const body = await decodeRequestBody(encodedBody);
+    const body = await request.text();
     const { isSuccess, isKilled, out, error } = await executeCommand(
       commandType,
       body,
@@ -32,31 +29,29 @@ export async function handleDenoCommand(
 
     if (!isSuccess) {
       if (isKilled) {
-        return request.respond({
-          status: 504,
-          body: "Executing the given Deno command is taking too long to load.",
-        });
+        return new Response(
+          "Executing the given Deno command is taking too long to load.",
+          {
+            status: 504,
+          },
+        );
       }
-      return request.respond({
+      return new Response(error, {
         status: 500,
-        body: error,
       });
     }
-    return request.respond({
+    return new Response(out, {
       status: 200,
-      body: out,
     });
   } catch (e) {
     if (e instanceof SyntaxError) {
-      return {
+      return new Response("Cannot process request body.", {
         status: 400,
-        body: "Cannot process request body.",
-      };
+      });
     }
     console.error(e);
-    return {
+    return new Response("Internal server error.", {
       status: 500,
-      body: "Internal server error.",
-    };
+    });
   }
 }

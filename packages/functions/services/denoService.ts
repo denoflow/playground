@@ -21,10 +21,10 @@ export function executeCommand(
   // const queryParams = new URLSearchParams(search || '')
   // if (queryParams.has("unstable")) {
   // }
-  command.push("--unstable");
+  // command.push('--unstable')
 
   if (commandType === "run") {
-    command.push("--allow-all");
+    command.push("-A");
   }
   command.push("https://deno.land/x/denoflow@0.0.15/cli.ts");
   command.push("run");

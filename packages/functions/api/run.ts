@@ -1,8 +1,5 @@
-#!/usr/bin/env DENO_DIR=/tmp/deno_dir deno run
-
 import { handleDenoCommand } from "../controllers/denoCommandController.ts";
-import { ServerRequest } from "../deps.ts";
 
-export default function run(request: ServerRequest) {
+export default function run(request: Request) {
   return handleDenoCommand("run", request);
 }
