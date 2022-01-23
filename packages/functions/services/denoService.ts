@@ -15,16 +15,23 @@ export function executeCommand(
   out: string;
   error: string;
 }> {
-  const command = ["deno", commandType];
+  let command = ["deno", commandType];
 
   // const [_, search] = url.split('?')
   // const queryParams = new URLSearchParams(search || '')
   // if (queryParams.has("unstable")) {
   // }
-  // command.push('--unstable')
+  command.push("--unstable");
 
   if (commandType === "run") {
-    command.push("-A");
+    command = command.concat(
+      "--allow-read",
+      "/tmp",
+      "--allow-write",
+      "/tmp",
+      "--allow-net",
+      "--allow-run",
+    );
   }
   command.push("https://deno.land/x/denoflow@0.0.15/cli.ts");
   command.push("run");
