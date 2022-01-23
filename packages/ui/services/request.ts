@@ -26,7 +26,12 @@ export function performRequest(
   });
 }
 
-export type ExampleId = 'default' | 'simple' | 'fetch' | 'rss-discord';
+export type ExampleId =
+  | 'default'
+  | 'simple'
+  | 'fetch'
+  | 'rss-discord'
+  | 'fetch-simple';
 
 export function getExampleSourceCode(exampleId: ExampleId): Promise<string> {
   const { origin } = window.location;

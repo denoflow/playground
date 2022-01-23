@@ -36,9 +36,9 @@ export function executeCommand(
       // "--allow-run",
     );
   }
-  command.push("https://deno.land/x/denoflow@0.0.18/cli.ts");
+  command.push("https://deno.land/x/denoflow@0.0.20/cli.ts");
   command.push("run");
-  // command.push('--debug')
+  command.push("--force");
   command.push("--stdin");
 
   return execute(Array.from(command), body);
