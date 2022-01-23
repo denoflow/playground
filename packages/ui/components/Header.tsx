@@ -31,7 +31,7 @@ const Header = (): JSX.Element => {
             <DenoLogo />
             <div className={styles.title}>
               <h1>Denoflow Playground</h1>
-              <h2>An unofficial land for exploring</h2>
+              <h2>A land for exploring</h2>
             </div>
           </a>
         </Link>
@@ -76,7 +76,7 @@ const Header = (): JSX.Element => {
         <DialogContent dividers>
           <DialogContent id="about-content" tabIndex={-1}>
             <Alert severity="info">
-              <em>This is an unofficial playground for Denoflow.</em>
+              <em>This is a playground for Denoflow.</em>
             </Alert>
             <p>
               <strong>

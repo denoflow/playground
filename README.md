@@ -1,4 +1,4 @@
-# Denoflow Playground — An unofficial land for exploring 
+# Denoflow Playground — An land for exploring 
 
 The playground lets you write denoflow online in a safe and shareable way.
 
