@@ -1,11 +1,13 @@
 sources:
-  - from: https://deno.land/x/denoflow/sources/rss.ts
+  - from: https://deno.land/x/denoflow@0.0.21/sources/rss.ts
     args:
       - https://actionsflow.github.io/test-page/hn-rss.xml
     limit: 1
+    force: true
 steps:
+  - run: console.log('item',ctx.item)
   - use: fetch
-  # Open: <https://requestbin.com/r/enyvb91j5zjv9/23eNPamD4DK4YK1rfEB1FAQOKIj> , See live webhook request. replace your webhook here
+    # Open: <https://requestbin.com/r/enyvb91j5zjv9/23eNPamD4DK4YK1rfEB1FAQOKIj> , See live webhook request. replace your webhook here
     env:
       DISCORD_WEBHOOK: https://enyvb91j5zjv9.x.pipedream.net/
     args:
