@@ -3,16 +3,12 @@
 The playground lets you write [denoflow](https://github.com/denoflow/denoflow) online in a safe and shareable way.
 
 
-<p align="center"><br><img width="1216" alt="image" src="https://user-images.githubusercontent.com/7854312/117201415-ec1ad280-adec-11eb-8af6-dad209a6010c.gif"><br><br></p>
+<p align="center"><br><img width="1216" alt="image" src="https://raw.githubusercontent.com/denoflow/playground/main/screenshot.gif"><br><br></p>
 
 
+> This project forked from [peterbartha/deno-playground](https://github.com/peterbartha/deno-playground) , Thanks a lot!
 
 ## Project structure
-
-There are two packages inside the project:
-- Serverless Deno back-end (built on [vercel-deno](https://github.com/TooTallNate/vercel-deno))
-- [Next.js](https://nextjs.org/) front-end
-
 
 ```
 .
