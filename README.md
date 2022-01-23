@@ -89,6 +89,10 @@ sudo systemctl status denoflow-playground-api
 sudo journalctl -f -u denoflow-playground-api
 ```
 
+```
+sudo systemctl restart denoflow-playground-api
+```
+
 ## License
 
 This project is licensed under [MIT](LICENSE) license.
