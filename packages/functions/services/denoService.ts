@@ -25,10 +25,8 @@ export function executeCommand(
 
   if (commandType === "run") {
     command = command.concat(
-      "--allow-read",
-      "/tmp",
-      "--allow-write",
-      "/tmp",
+      "--allow-read=/tmp",
+      "--allow-write=/tmp",
       "--allow-net",
       "--allow-run",
     );
