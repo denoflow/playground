@@ -22,7 +22,7 @@ module.exports = (phase) => {
       if (isDev) {
         return 'http://localhost:3000/api';
       }
-      return 'https://denoflow-playground-api.vercel.app/api';
+      return 'https://denoflow-playground-api.owenyoung.com/api';
     })(),
   };
 

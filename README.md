@@ -76,7 +76,12 @@ sudo systemctl daemon-reload
 ```
 
 ```bash
-sudo systemctl enable --now qbittorrent.service
+sudo systemctl enable --now denoflow-playground-api.service
+```
+
+
+```bash
+sudo systemctl status denoflow-playground-api
 ```
 
 ## License
