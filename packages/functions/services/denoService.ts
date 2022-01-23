@@ -25,13 +25,13 @@ export function executeCommand(
 
   if (commandType === "run") {
     command = command.concat(
-      "--allow-read=/tmp",
-      "--allow-write=/tmp",
+      "--allow-read=/tmp,/private/tmp",
+      "--allow-write=/tmp,/private/tmp",
       "--allow-net",
       "--allow-run",
     );
   }
-  command.push("https://deno.land/x/denoflow@0.0.15/cli.ts");
+  command.push("https://deno.land/x/denoflow@0.0.16/cli.ts");
   command.push("run");
   command.push("--debug");
   command.push("--stdin");
@@ -50,11 +50,13 @@ async function execute(
 }> {
   let isKilled = false;
   // https://deno.land/manual@main/examples/subprocess
+  console.log("cmd", cmd);
 
   const deno = Deno.run({
     cmd,
+    cwd: "/tmp/denoflow",
     env: {
-      DENO_DIR: "/tmp/deno_dir",
+      DENO_DIR: "/tmp/denoflow/deno_dir",
     },
     stdin: "piped",
     stdout: "piped",

@@ -20,7 +20,7 @@ module.exports = (phase) => {
   const env = {
     API_URL: (() => {
       if (isDev) {
-        return 'http://localhost:3000/api';
+        return 'http://localhost:10030/api';
       }
       return 'https://denoflow-playground-api.owenyoung.com/api';
     })(),
