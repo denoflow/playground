@@ -1,0 +1,18 @@
+sources:
+  - from: https://deno.land/x/axiod@0.24/mod.ts
+    use: get
+    args:
+      - https://test.owenyoung.com/slim.json
+    itemsPath: data.hits
+    key: objectID
+    limit: 1
+steps: 
+  - run: console.log('item.title', ctx.item.title)
+  # Open: <https://requestbin.com/r/enyvb91j5zjv9/23eNPamD4DK4YK1rfEB1FAQOKIj> , See live webhook request.
+  - from: https://deno.land/x/axiod@0.24/mod.ts
+    use: post
+    args:
+      - https://enyvb91j5zjv9.x.pipedream.net/
+      -  ${{ctx.item}}
+      - headers:
+          'Content-Type': 'application/json'
