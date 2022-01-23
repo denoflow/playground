@@ -1,4 +1,4 @@
-import { ensureDir, writeAll } from "../deps.ts";
+import { ensureDirSync, writeAll } from "../deps.ts";
 import { SupportedDenoSubCommand } from "../interface.ts";
 // import { run } from 'https://denopkg.com/denoflow/denoflow@main/mod.ts'
 // Vercel timeout is 10 seconds for hobby tier:
@@ -22,7 +22,7 @@ export function executeCommand(
   // if (queryParams.has("unstable")) {
   // }
   command.push("--unstable");
-
+  command.push("-L=debug");
   if (commandType === "run") {
     let directory = "/tmp";
     if (osType() === "darwin") {
@@ -54,9 +54,9 @@ async function execute(
 }> {
   let isKilled = false;
   // https://deno.land/manual@main/examples/subprocess
-  // console.log("cmd", cmd);
+  console.log("cmd", cmd);
   // ensure dir exists
-  await ensureDir("/tmp/denoflow");
+  ensureDirSync("/tmp/denoflow");
   const deno = Deno.run({
     cmd,
     cwd: "/tmp/denoflow",

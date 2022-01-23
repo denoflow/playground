@@ -63,13 +63,14 @@ After=network-online.target nss-lookup.target
 [Service]
 Type=exec
 User=green
-ExecStart=/home/green/.deno/bin/deno run --allow-run --allow-read=/tmp,/private/tmp --allow-write=/tmp,/private/tmp --allow-net /home/green/playground/packages/functions/main.ts
+ExecStart=/home/green/.deno/bin/deno run --allow-run --allow-read=/tmp --allow-write=/tmp --allow-net /home/green/playground/packages/functions/main.ts
 Restart=on-failure
 SyslogIdentifier=denoflow-playground-api
 
 [Install]
 WantedBy=multi-user.target
 ```
+
 
 ```bash
 sudo systemctl daemon-reload
@@ -82,6 +83,10 @@ sudo systemctl enable --now denoflow-playground-api.service
 
 ```bash
 sudo systemctl status denoflow-playground-api
+```
+
+```bash
+sudo journalctl -f -u denoflow-playground-api
 ```
 
 ## License
