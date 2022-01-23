@@ -32,7 +32,7 @@ export function executeCommand(
       "--allow-read=" + directory,
       "--allow-write=" + directory,
       "--allow-net",
-      "--allow-run",
+      // "--allow-run",
     );
   }
   command.push("https://deno.land/x/denoflow@0.0.16/cli.ts");
@@ -60,7 +60,7 @@ async function execute(
     cmd,
     cwd: "/tmp/denoflow",
     env: {
-      DENO_DIR: "/tmp/denoflow/deno_dir",
+      DENO_DIR: "/tmp/deno_dir",
     },
     stdin: "piped",
     stdout: "piped",
