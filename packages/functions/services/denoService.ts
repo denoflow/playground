@@ -15,6 +15,7 @@ export function executeCommand(
   out: string;
   error: string;
 }> {
+  // must enable env
   let command = ["deno", commandType];
 
   // const [_, search] = url.split('?')
