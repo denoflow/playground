@@ -82,7 +82,7 @@ const Header = (): JSX.Element => {
               <strong>
                 The playground is an{' '}
                 <a
-                  href="https://github.com/theowenyoung/denoflow-playground"
+                  href="https://github.com/denoflow/playground"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -164,6 +164,16 @@ const Header = (): JSX.Element => {
                   rel="noopener noreferrer"
                 >
                   Denoflow Docs
+                </a>
+              </li>{' '}
+              <li>
+                Playground Source Code{' '}
+                <a
+                  href="https://github.com/denoflow/playground"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  denoflow/playground
                 </a>
               </li>
             </ul>
