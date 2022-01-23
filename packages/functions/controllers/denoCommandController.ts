@@ -30,13 +30,15 @@ export async function handleDenoCommand(
     if (!isSuccess) {
       if (isKilled) {
         return new Response(
-          "Executing the given Deno command is taking too long to load.",
+          out +
+            "\n" +
+            "Executing the given Deno command is taking too long to load.",
           {
             status: 504,
           },
         );
       }
-      return new Response(error, {
+      return new Response(out + "\n" + error, {
         status: 500,
       });
     }
