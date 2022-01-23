@@ -63,7 +63,7 @@ After=network-online.target nss-lookup.target
 Type=exec
 Environment="PATH=/home/green/.deno/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 User=green
-ExecStart=/home/green/.deno/bin/deno run --allow-run --allow-read=/tmp --allow-write=/tmp --allow-net /home/green/playground/packages/functions/main.ts
+ExecStart=/home/green/.deno/bin/deno run --allow-run --allow-read=/tmp --allow-write=/tmp --allow-net --allow-env /home/green/playground/packages/functions/main.ts
 Restart=on-failure
 SyslogIdentifier=denoflow-playground-api
 

@@ -15,7 +15,7 @@ export function executeCommand(
   out: string;
   error: string;
 }> {
-  let command = ["/home/green/.deno/bin/deno", commandType];
+  let command = ["deno", commandType];
 
   // const [_, search] = url.split('?')
   // const queryParams = new URLSearchParams(search || '')
