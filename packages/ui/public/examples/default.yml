@@ -1,5 +1,5 @@
 sources:
-  - from: https://deno.land/x/denoflow@0.0.21/sources/rss.ts
+  - from: https://deno.land/x/denoflow@0.0.28/sources/rss.ts
     args:
       - https://actionsflow.github.io/test-page/hn-rss.xml
     limit: 1
